@@ -53,7 +53,7 @@
                         Ref No: <b>{{ $result->code }}/{{ $result->id }}/2024</b>
                     </div>
                     <div class="py-1">
-                        Status: <b class="{{ $result->status ? 'text-green-400' : 'text-red-500' }}">{!! $result->status ? 'Congratulations, Your are selected!<br> To confirm your seat pay RS 1000 on or before 20/03/2024!' : 'Sorry, you are not selected!' !!}</b>
+                        Status: <b class="{{ $result->status ? 'text-green-400' : 'text-red-500' }}">{!! $result->status ? 'Congratulations, Your are selected!' : 'Sorry, you are not selected!' !!}</b>
                     </div>
                 </div>
             </div>
