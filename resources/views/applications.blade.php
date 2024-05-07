@@ -47,15 +47,7 @@
                                 <div class="flex flex-col items-center">
                                     <a target="_blank"
                                        class="block px-4 py-2 my-1 font-semibold text-white bg-blue-600 hover:bg-blue-500 w-max rounded-xl"
-                                       href="{{ route('hallticket', ['slug' => $data->slug]) }}">Admit Card <i
-                                           class="ml-2 fa fa-download"></i></a>
-                                    <a target="_blank"
-                                       class="block px-4 py-2 my-1 font-semibold text-white bg-blue-600 hover:bg-blue-500 w-max rounded-xl"
-                                       href="{{ route('applicationPrint', ['slug' => $data->slug]) }}">Application<i
-                                           class="ml-2 fa fa-download"></i></a>
-                                    <a target="_blank"
-                                       class="block px-4 py-2 my-1 font-semibold text-white bg-blue-600 hover:bg-blue-500 w-max rounded-xl"
-                                       href="{{ route('documents', ['slug' => $data->slug]) }}">Docs <i
+                                       href="{{ route('applicationPrint', ['uuid' => $data->uuid]) }}">Application<i
                                            class="ml-2 fa fa-download"></i></a>
                                 </div>
                             </td>

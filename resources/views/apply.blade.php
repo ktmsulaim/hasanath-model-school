@@ -73,13 +73,7 @@
                                             Birth</label>
                                         <input type="date" name="dob" id="dob" autocomplete="dob"
                                                class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                               min="2011-11-01" max="2013-04-30" pattern="\d{4}-\d{2}-\d{2}"
-                                               @change="checkDate($event)" @input="checkDate($event)">
-                                        <p class="my-2 text-sm text-green-600" x-text="date"></p>
-                                        <p :class="{ 'text-gray-500': !dateError, 'text-red-500': dateError }"
-                                           class="mt-2 text-xs">
-                                            <b x-show="dateError">*</b> Must be between 01-Nov-2011 and 30-Apr-2013
-                                        </p>
+                                               min="2011-11-01" max="2013-04-30" pattern="\d{4}-\d{2}-\d{2}">
                                     </div>
 
                                     <div class="col-span-6 form-wrapper">
@@ -89,86 +83,48 @@
                                                class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                                     </div>
 
-                                    <!-- <div class="col-span-6 sm:col-span-3">
-                                <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
-                                <select id="country" name="country" autocomplete="country-name" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                                  <option>United States</option>
-                                  <option>Canada</option>
-                                  <option>Mexico</option>
-                                </select>
-                              </div> -->
-
+                                    {{-- mother --}}
                                     <div class="col-span-6 form-wrapper">
-                                        <label class="block text-sm font-medium text-gray-700"> Birth Certificate </label>
-                                        <div
-                                             class="flex justify-center px-6 pt-5 pb-6 mt-1 border-2 border-gray-300 border-dashed rounded-md">
-                                            <div class="space-y-1 text-center">
-                                                <svg x-show="!bc && !bcPdf" class="w-12 h-12 mx-auto text-gray-400"
-                                                     stroke="currentColor" fill="none" viewBox="0 0 48 48"
-                                                     aria-hidden="true">
-                                                    <path
-                                                          d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                                                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg>
-                                                <img :src="bc" x-show="bc" class="block w-64 h-auto mx-auto mb-4">
-                                                <iframe x-show="bcPdf" :src="bcPdf ? bcPdf + '#toolbar=0' : false"
-                                                        type="application/pdf" title="BC Pdf"
-                                                        class="block w-64 h-auto mx-auto mb-4 overflow-y-visible"
-                                                        style="min-height: 22rem;">
-                                                    <a target="_blank" class="text-blue-500" :href="bcPdf">View selected
-                                                        PDF</a>
-                                                </iframe>
-                                                <div class="flex items-center justify-center text-sm text-gray-600">
-                                                    <label for="bc"
-                                                           class="relative font-medium text-blue-600 bg-white rounded-md cursor-pointer hover:text-blue-500 focus-within:outline-none">
-                                                        <span
-                                                              x-text="bc || bcPdf ? 'Change the File' : 'Upload a file'"></span>
-                                                        <input @change="imageChange($event, 'bc')"
-                                                               accept=".pdf, image/jpg, image/jpeg, image/png" id="bc"
-                                                               name="bc" type="file" class="sr-only">
-                                                    </label>
-                                                    <p class="pl-1">or drag and drop</p>
-                                                </div>
-                                                <p class="text-xs text-gray-500">PDF, PNG, JPG, JPEG up to 1MB</p>
-                                            </div>
-                                        </div>
+                                        <label for="mother" class="block text-sm font-medium text-gray-700">Mother's
+                                            Name</label>
+                                        <input type="text" name="mother" id="mother" autocomplete="mother"
+                                               class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                                     </div>
 
+                                    {{-- how many brothers the applicant has --}}
+                                    <div class="col-span-6 sm:col-span-3 form-wrapper">
+                                        <label for="brothers" class="block text-sm font-medium text-gray-700">No. of
+                                            Brothers</label>
+                                        <input type="number" name="brothers" id="brothers" autocomplete="brothers"
+                                               class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                    </div>
+
+                                    {{-- how many sisters the applicant has --}}
+                                    <div class="col-span-6 sm:col-span-3 form-wrapper">
+                                        <label for="sisters" class="block text-sm font-medium text-gray-700">No. of
+                                            Sisters</label>
+                                        <input type="number" name="sisters" id="sisters" autocomplete="sisters"
+                                               class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                    </div>
+
+                                    {{-- applicant is orphan / destitute --}}
                                     <div class="col-span-6 form-wrapper">
-                                        <label class="block text-sm font-medium text-gray-700"> School Certificate / Mark
-                                            Sheet (Required if Present*) </label>
-                                        <div
-                                             class="flex justify-center px-6 pt-5 pb-6 mt-1 border-2 border-gray-300 border-dashed rounded-md">
-                                            <div class="space-y-1 text-center">
-                                                <svg x-show="!tc && !tcPdf" class="w-12 h-12 mx-auto text-gray-400"
-                                                     stroke="currentColor" fill="none" viewBox="0 0 48 48"
-                                                     aria-hidden="true">
-                                                    <path
-                                                          d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                                                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg>
-                                                <img :src="tc" x-show="tc" class="block w-64 h-auto mx-auto mb-4">
-                                                <iframe x-show="tcPdf" :src="tcPdf ? tcPdf + '#toolbar=0' : false"
-                                                        type="application/pdf" title="TC Pdf"
-                                                        class="block w-64 h-auto mx-auto mb-4 overflow-y-visible"
-                                                        style="min-height: 22rem;">
-                                                    <a target="_blank" class="text-blue-500" :href="tcPdf">View selected
-                                                        PDF</a>
-                                                </iframe>
-                                                <div class="flex items-center justify-center text-sm text-gray-600">
-                                                    <label for="tc"
-                                                           class="relative font-medium text-blue-600 bg-white rounded-md cursor-pointer hover:text-blue-500 focus-within:outline-none">
-                                                        <span
-                                                              x-text="tc || tcPdf ? 'Change the File' : 'Upload a file'"></span>
-                                                        <input @change="imageChange($event, 'tc')"
-                                                               accept=".pdf, image/jpg, image/jpeg, image/png" id="tc"
-                                                               name="tc" type="file" class="sr-only">
-                                                    </label>
-                                                    <p class="pl-1">or drag and drop</p>
-                                                </div>
-                                                <p class="text-xs text-gray-500">PDF, PNG, JPG, JPEG up to 1MB</p>
-                                            </div>
-                                        </div>
+                                        <label for="orphan" class="block text-sm font-medium text-gray-700">Is the
+                                            applicant an Orphan or Destitute?</label>
+                                        <select x-model="is_orphan" id="orphan" name="orphan" autocomplete="orphan"
+                                                class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                            <option value="0">No</option>
+                                            <option value="1">Orphan</option>
+                                            <option value="2">Destitute</option>
+                                        </select>
+                                    </div>
+
+                                    {{-- if applicant is orphan, dod of father --}}
+                                    <div class="col-span-6 sm:col-span-3 form-wrapper" x-show="is_orphan == 1">
+                                        <label for="dod" class="block text-sm font-medium text-gray-700">Date of Death of
+                                            Father</label>
+                                        <input type="date" name="dod" id="dod" autocomplete="dod"
+                                               class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                                     </div>
 
                                 </div>
@@ -249,21 +205,6 @@
                                                @change="slicer($event)">
                                     </div>
 
-                                    <div class="col-span-6 sm:col-span-3 form-wrapper">
-                                        <label for="mobile2" class="block text-sm font-medium text-gray-700">Alternative
-                                            Mobile No.</label>
-                                        <input type="number" name="mobile2" id="mobile2" autocomplete="mobile2"
-                                               class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                               min="1000000000" max="9999999999" @input="slicer($event)"
-                                               @change="slicer($event)">
-                                    </div>
-
-                                    <div class="col-span-6 sm:col-span-4 form-wrapper">
-                                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                                        <input type="email" name="email" id="email" autocomplete="email"
-                                               class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
@@ -282,8 +223,8 @@
                     <div class="md:col-span-1">
                         <div class="px-4 sm:px-0">
                             <h3 class="text-lg font-medium leading-6 text-gray-900">Educational Details</h3>
-                            <p class="mt-1 text-sm text-gray-600">Select most comfortable exam centre and date for the
-                                student.</p>
+                            <p class="mt-1 text-sm text-gray-600">Please provide correct information as per documents to
+                                avoid mismatches.</p>
                         </div>
                     </div>
                     <div class="mt-5 md:mt-0 md:col-span-2">
@@ -292,117 +233,11 @@
                                 <div class="px-4 py-5 space-y-6 bg-white sm:p-6">
                                     <div class="grid grid-cols-6 gap-6">
 
-                                        <fieldset class="col-span-6">
-                                            <div>
-                                                <legend class="text-base font-medium text-gray-900">Exam Centre</legend>
-                                                <p class="text-sm text-gray-500">Select any exam center to appear for the
-                                                    interview on the <b>specific date</b>.</p>
-                                            </div>
-                                            <div class="mt-4 space-y-4 form-wrapper">
-                                                <template x-for="(centre, c) in examcentres">
-                                                    <div class="flex items-start col-span-6">
-                                                        <div class="flex items-center h-5">
-                                                            <input :id="'examcentre' + c" name="examcentre" type="radio"
-                                                                   class="w-4 h-4 text-blue-600 border-gray-300 rounded-full focus:ring-blue-500"
-                                                                   :value="c + 1">
-                                                        </div>
-                                                        <div class="ml-3 text-sm">
-                                                            <label :for="'examcentre' + c" class="font-medium text-gray-700"
-                                                                   x-text="centre[0]"></label>
-                                                            <p class="font-bold text-gray-500" x-text="centre[1]"></p>
-                                                        </div>
-                                                    </div>
-                                                </template>
-                                            </div>
-
-                                            {{-- <div x-show="show_centres" class="mt-4">
-                                                <h3 class="pt-4 text-xl font-medium leading-6 text-gray-900">Exam Centres -
-                                                    Details
-                                                </h3>
-                                                <div class="mt-2 font-semibold">Dubhri Exam Centre:</div>
-                                                <p class="text-sm">
-                                                    2292NO SORIAT MEMORIAL L.P SCHOOL. <br>
-                                                    JHAGRARPAR PT-1(NEAR HOSPITAL CHECK GATE)<br>
-                                                    OPP-J.M ENGLISH SCHOOL.<br>
-                                                    DIST-DHUBRI(ASSAM)<br>
-                                                    Mobile no of Head teacher-9101381392
-                                                </p>
-                                                <div class="mt-2 font-semibold">Guwahaty Exam Centre:</div>
-                                                <p class="text-sm">
-                                                    Katahbari ME SCHOOL. <br> ( Near balabhadra mandir). <br> Via Garchuk
-                                                    Chariali. Guwahati
-                                                    <br> Cont. 9678886786/ 7002514831.
-                                                </p>
-
-                                                <div class="mt-2 font-semibold">Goraimari Exam Centre Details:</div>
-                                                <p class="text-sm">
-                                                    College Masjid, Garoimari <br>
-                                                    PS: Chaygaon <br>
-                                                    DT: Kamrup Rural <br>
-                                                    Mob: 91012 63773 <br>
-                                                    70352 42607
-                                                </p>
-
-                                                <div class="mt-2 font-semibold">Bongaigaon exam centre:</div>
-                                                <p class="text-sm">
-                                                    2 NO. JARAGURI HAFIZIYA MADRASSA <br>
-                                                    NEAR 2 NO. JARAGURI JAMMA MASJID <br>
-                                                    SIDAL SATI <br>
-                                                    MANIKPUR <br>
-                                                    CONTACT: 88128 96175 Rakibul Islam (President)
-                                                </p>
-
-                                                <div class="mt-2 font-semibold">Karupetia Exam Centre:</div>
-                                                <p class="text-sm">
-                                                    Bright Learning Goal Senior Secondary School (BLG College) <br>
-                                                    Address: Balogorah (Kharupetia College Turning), <br> Kharupetia,
-                                                    Darrang,
-                                                    Assam <br>
-                                                    Contd. No: +916002944595
-                                                </p>
-
-                                            </div>
-
-                                            <button class="mt-4 btn btn-green" type="button"
-                                                    @click="show_centres = !show_centres">
-                                                <span x-text="show_centres ? 'Hide' : 'View'"></span> Exam Centres
-                                            </button> --}}
-
-                                        </fieldset>
-
-                                        <div class="col-span-6 py-2">
-                                            <div class="border-t border-gray-200"></div>
-                                        </div>
-
-                                        <fieldset class="col-span-6">
-                                            <div>
-                                                <legend class="text-base font-medium text-gray-900">Did the student study in
-                                                    Madrassa or Maktab?</legend>
-                                                <p class="text-sm text-gray-500">Select any option.</p>
-                                            </div>
-                                            <div class="mt-4 space-y-4 form-wrapper">
-                                                <template x-for="(option, o) in ['Yes', 'No']">
-                                                    <div class="flex items-start col-span-6">
-                                                        <div class="flex items-center h-5">
-                                                            <input x-model="makthab" :id="'makthab' + o" name="makthab"
-                                                                   type="radio" :value="option"
-                                                                   class="w-4 h-4 text-blue-600 border-gray-300 rounded-full focus:ring-blue-500">
-                                                        </div>
-                                                        <div class="ml-3 text-sm">
-                                                            <label :for="'makthab' + o" class="font-medium text-gray-700"
-                                                                   x-text="option"></label>
-                                                        </div>
-                                                    </div>
-                                                </template>
-                                            </div>
-
-                                        </fieldset>
-
-                                        <div class="col-span-6 sm:col-span-3 form-wrapper" x-show="makthab == 'Yes'">
-                                            <label for="makthab_years" class="block text-base font-medium text-gray-900">If
-                                                yes, how many years?</label>
-                                            <input type="number" name="makthab_years" id="makthab_years"
-                                                   autocomplete="makthab_years"
+                                        {{-- in which class applicant is studying? --}}
+                                        <div class="col-span-6 sm:col-span-3 form-wrapper">
+                                            <label for="class" class="block text-sm font-medium text-gray-700">Class in
+                                                which the applicant is studying</label>
+                                            <input type="text" name="class" id="class" autocomplete="class"
                                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                                         </div>
 
@@ -464,34 +299,11 @@
     <script type="text/javascript">
         function app() {
             return {
-                show_centres: false,
-                dateError: false,
-                date: 'Not Selected',
                 image: false,
-                bc: false,
-                bcPdf: false,
-                tcPdf: false,
-                tc: false,
                 village: '',
                 po: '',
                 ps: '',
-                makthab: '',
-                examcentres: @json($examcentres),
-                checkDate(e) {
-
-                    this.dateError = true;
-
-                    var start = moment('11-01-2011', 'MM-DD-YYYY');
-                    var end = moment('04-30-2013', 'MM-DD-YYYY');
-                    var date = e.target.value;
-
-                    if (moment(date).isValid()) {
-                        this.date = moment(date).format('DD-MMM-YYYY');
-                    } else
-                        this.date = 'Not Selected';
-
-                    this.dateError = !moment(date).isBetween(start, end, undefined, '[]'); //true
-                },
+                is_orphan: 0,
                 slicer(e) {
                     if (e.target.value * 1 > e.target.max * 1) {
                         e.target.value = e.target.value.slice(0, e.target.max.length);
@@ -504,24 +316,16 @@
                     var file = e.target.files[0];
                     var error = false;
                     var fileTypes = {
-                        image: ['image/jpg', 'image/jpeg', 'image/png'],
-                        bc: ['image/jpg', 'image/jpeg', 'image/png', 'application/pdf'],
-                        tc: ['image/jpg', 'image/jpeg', 'image/png', 'application/pdf']
+                        image: ['image/jpg', 'image/jpeg', 'image/png']
                     };
                     var names = {
                         image: 'Image',
-                        bc: 'Birth Certificate',
-                        tc: 'Transfer Certificate'
                     };
                     var errors = {
                         image: 'jpg, jpeg, or png',
-                        bc: 'pdf, jpg, jpeg, or png',
-                        tc: 'pdf, jpg, jpeg, or png'
                     };
                     var sizes = {
-                        image: 512,
-                        bc: 1024,
-                        tc: 1024
+                        image: 512
                     };
                     if (!fileTypes[obj].includes(file.type))
                         error = names[obj] + ' must be ' + errors[obj] + ' format!';
@@ -543,7 +347,6 @@
                             }
                         } else {
                             localStorage.setItem('dfdfdfImageSetup', btoa(fileURL));
-                            console.log(btoa(fileURL));
                         }
                     };
                     fileReader.readAsDataURL(file);
@@ -671,7 +474,6 @@
                         return response.json();
                     })
                     .then(text => {
-                        console.log(text);
                         document.getElementById('ajaxLoading').style.display = 'none';
                         this.loadingAjax = false;
                         document.body.classList.remove('h-screen', 'overflow-y-hidden');
@@ -686,7 +488,6 @@
                         }
                     })
                     .catch(e => {
-                        console.log(e);
                         document.getElementById('ajaxLoading').style.display = 'none';
                         this.loadingAjax = false;
                         document.body.classList.remove('h-screen', 'overflow-y-hidden');
@@ -752,21 +553,9 @@
             var start = moment('11-01-2011', 'MM-DD-YYYY');
             var end = moment('04-30-2013', 'MM-DD-YYYY');
             var rules = {
-                email: {
-                    email: true,
-                },
                 dob: {
                     datetime: {
-                        dateOnly: true,
-                        earliest: start.utc(),
-                        latest: end.utc().add(1, 'days'),
-                        message: '^Date of Birth must be between 01-Nov-2011 and 30-Apr-2013'
-                    }
-                },
-                examcentre: {
-                    inclusion: {
-                        within: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
-                        message: "^Please Select Any Option!"
+                        dateOnly: true
                     }
                 },
                 "postalcode": {
@@ -785,27 +574,22 @@
                         message: "^Please enter a valid 10 digit mobile no. without code."
                     }
                 },
-                "mobile2": {
-                    numericality: {
-                        onlyInteger: true,
-                        greaterThanOrEqualTo: 1000000000,
-                        lessThanOrEqualTo: 9999999999,
-                        message: "^Please enter a valid 10 digit mobile no. without code."
+                "dod": {
+                    datetime: {
+                        dateOnly: true
+                    },
+                    requiredIf: {
+                        check: function(attributes) {
+                            return attributes.is_orphan == 1;
+                        }
                     }
                 },
-                "makthab_years": {
-                    requiredIf: {
-                        check: (a) => {
-                            return a.makthab == 'Yes';
-                        }
-                    },
-                    numericality: {
-                        onlyInteger: true,
-                        greaterThanOrEqualTo: 1,
-                        lessThanOrEqualTo: 8,
-                        message: "^Please enter a valid number."
+                "image": {
+                    presence: {
+                        allowEmpty: false,
+                        message: '^Please select a photo!'
                     }
-                }
+                },
             };
             var presence = {
                 presence: {
@@ -814,19 +598,10 @@
                 }
             };
             document.querySelector('#application_form').querySelectorAll('input:not([type="hidden"]), textarea, select').forEach(i => {
-                if (i.name == 'tc') {
-                    return false;
-                }
-                if (i.name == 'makthab_years') {
-                    rules[i.name] = {
-                        ...rules[i.name]
-                    };
-                } else {
-                    rules[i.name] = {
-                        ...rules[i.name],
-                        ...presence
-                    };
-                }
+                rules[i.name] = {
+                    ...rules[i.name],
+                    ...presence
+                };
             });
             var validated = new FormValidate('#application_form', rules);
         }

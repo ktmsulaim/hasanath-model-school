@@ -8,41 +8,13 @@ use App\Models\Setting;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
-
-
-    protected $centres = [
-        ['Dubhri', '04/02/2024'],
-        ['Goraimari', '10/02/2024'],
-        ['Karupetia', '11/02/2024'],
-        ['Guwahati', '18/02/2024'],
-        ['Bongaigaon', '24/02/2024'],
-        ['Manipur', '24/02/2024'],
-        ['Manipur', '25/02/2024'],
-        ['Tripura', '29/02/2024'],
-        ['Karimganj', '02/03/2024'],
-        ['Baisha - Barmara DH Campus', '03/03/2024'],
-        ['Baisha - Barmara DH Campus', '07/03/2024'],
-    ];
-
-    private function code($centre_id)
-    {
-        $centre = $this->centres[$centre_id - 1][0] ?? 'DH';
-        return strtoupper(substr($centre ?? 'DH', 0, 2));
-    }
-
     public function index()
     {
         $settings = Cache::rememberForever('settings', function () {
-            $settings_all = Setting::all();
-            $settings_ = new \stdClass;
-            foreach ($settings_all as $name) {
-                $settings_->{$name->name} = $name->value;
-            }
-            return $settings_;
+            return (object) Setting::pluck('value', 'name')->toArray();
         });
         $applicants_results = ($settings->results_starting_at ?? false) && \Carbon\Carbon::now()->between($settings->results_starting_at, $settings->results_ending_at);
         return view('home', ['title' => 'Home', 'robots' => 'index,follow', 'results' => $applicants_results]);
@@ -67,9 +39,7 @@ class HomeController extends Controller
 
     public function applicantStatus()
     {
-        $applicationsAll = Applicant::where('remarks', '<>', 'deleted')
-            ->orWhereNull('remarks')
-            ->select('id', 'name', 'status')
+        $applicationsAll = Applicant::select('id', 'name', 'status')
             ->get();
         return view('admin.status', ['applicantsAll' => $applicationsAll]);
     }
@@ -108,64 +78,17 @@ class HomeController extends Controller
     public function resultShow(Request $request)
     {
         $request->validate([
-            'id' => 'required|exists:applicants,id',
-            'dob' => 'required|exists:applicants,dob',
+            'id' => 'required|numeric',
+            'dob' => 'required|date',
         ]);
-        $applicant = Applicant::where('remarks', '<>', 'deleted')->orWhereNull('remarks')->get(['name', 'dob', 'id', 'status', 'examcentre']);
-        $applicant = $applicant->where('id', $request->id)->where('dob', $request->dob)->first();
+        $applicant = Applicant::where('dob', $request->dob)
+            ->select('name', 'dob', 'id', 'status')
+            ->find($request->id);
 
         if ($applicant) {
-            return redirect()->route('results')->with(['result' => $applicant, 'code' => $this->code($applicant->examcentre)]);
+            return redirect()->route('results')->with(['result' => $applicant]);
         }
 
         return back()->with('message', 'Incorrect Entry')->with('type', 'error');
-    }
-
-    public function marksheet()
-    {
-
-        // $file = file_get_contents(Storage::path('marksheet.json'));
-        // echo '<pre>'; print_r(json_decode($file)); echo '</pre>';
-        // exit;
-
-        $student = false;
-        if (session('result_ad_no') && session('result_roll_no')) {
-            $student = $this->getStudentByAdNoAndRoll(session('result_ad_no'), session('result_roll_no'));
-        }
-        return view('marksheet', compact('student'));
-    }
-
-    private function getStudentByAdNoAndRoll($ad_no, $roll_no)
-    {
-        $file = file_get_contents(Storage::path('marksheet.json'));
-        $presentData = false;
-        if ($file) {
-            $students = json_decode($file);
-            $student = array_filter($students, function ($student) use ($ad_no, $roll_no) {
-                return $student->ad_no == $ad_no && $student->roll_no == $roll_no;
-            });
-            if (count($student)) {
-                return array_values($student)[0];
-            }
-        }
-        return false;
-    }
-
-    public function marksheetPost(Request $request)
-    {
-        $request->validate([
-            'ad_no' => 'required',
-            'roll_no' => 'required',
-        ]);
-
-        $request->roll_no = strtoupper($request->roll_no);
-
-        if ($this->getStudentByAdNoAndRoll($request->ad_no, $request->roll_no)) {
-            session()->flash('result_ad_no', $request->ad_no);
-            session()->flash('result_roll_no', $request->roll_no);
-            return redirect()->route('marksheet');
-        }
-
-        return back()->withErrors(['error' => 'Please Enter Correct Admission No and Roll No.']);
     }
 }

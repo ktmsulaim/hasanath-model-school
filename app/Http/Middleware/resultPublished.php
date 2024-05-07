@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Setting;
 use App\Models\Applicant;
+use Illuminate\Support\Facades\Cache;
 
 class resultPublished
 {
@@ -19,12 +20,11 @@ class resultPublished
      */
     public function handle(Request $request, Closure $next)
     {
-        $settings_all = Setting::all();
-        $settings = new \stdClass();
-        foreach ($settings_all as $name) {
-            $settings->{$name->name} = $name->value;
-        }
-        $results = ($settings->results_starting_at ?? false) && \Carbon\Carbon::now()->between(($settings->results_starting_at ?? \Carbon\Carbon::today()->format('Y-m-d')), ($settings->results_ending_at ?? \Carbon\Carbon::today()->format('Y-m-d')));
+        $settings = Cache::rememberForever('settings', function () {
+            return (object) Setting::pluck('value', 'name')->toArray();
+        });
+
+        $results = ($settings->results_starting_at ?? false) && Carbon::now()->between(($settings->results_starting_at ?? Carbon::today()->format('Y-m-d')), ($settings->results_ending_at ?? Carbon::today()->format('Y-m-d')));
         if ($results && Applicant::where(['status' => 1])->count() > 0) {
             return $next($request);
         }

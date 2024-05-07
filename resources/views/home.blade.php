@@ -26,19 +26,16 @@
     @php
 
         if (empty($description)) {
-            $description = 'Official Website of Darul Huda Islamic University Assam Off Campus. DHIU was established as an
-    Islamic Academy in 1986 and formally upgraded to a university in May 2009. The philosophy upheld by DHIU was the
-    unique product of prolonged discourses and deliberations among great visionary scholars and supportive community
-    leaders who were deeply concerned about the dichotomous view towards education as religious and secular.';
+            $description = 'Admission Portal for Hasanth Girls Campus in West Bengal. Darul Hasanath Islamiyya Complex serves the Muslim community in India, especially Kerala, through great visionary scholars and supportive community leaders, providing quality education and training.';
         }
 
         if (empty($title)) {
-            $title = 'Darul Huda Assam Off Campus';
+            $title = 'Hasanath Girls Campus';
         } else {
-            $title .= ' | Darul Huda Assam Off Campus';
+            $title .= ' | Hasanath Girls Campus';
         }
 
-        $Simage = asset('img/campus.jpg');
+        $Simage = asset('img/campus.png');
         if (!empty($image)) {
             $Simage = $image;
         }
@@ -48,7 +45,7 @@
     <title>{{ $title }}</title>
 
     <meta name="title" content="{{ $title }}">
-    <meta name="keywords" content="Darul Huda, Assam, Off Campus, dhiu, Kerala, Islamic University, Admission Portal">
+    <meta name="keywords" content="Girls Campus, Hasanath, West Bengal, dhiu, Kerala, Islamic University, Admission Portal">
     <meta name="description" content="{{ $description }}">
     <link rel="canonical" href="{{ url()->current() }}">
     <meta property="image" content="{{ $Simage }}" />
@@ -92,13 +89,14 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
-<body class="w-screen h-screen overflow-hidden bg-cover" style="background-image: url({{ asset('img/campus.jpg') }});">
+<body class="w-screen h-screen overflow-hidden bg-cover" style="background-image: url({{ asset('img/campus.png') }});">
 
     @include('layouts.navigation')
     @if ($results)
         <div class="flex items-center justify-center w-screen h-screen p-4 overflow-hidden bg-black bg-opacity-70">
             <div class="text-center text-white">
-                <h1 class="mb-8 text-4xl font-bold uppercase">Welcome to <br>Darul Huda Assam Off Campus</h1>
+                <h1 class="text-4xl font-bold uppercase">Welcome to <br>Hasanath Girls Campus</h1>
+                <div class="mb-4 text-lg font-medium">Birbhum, West Bengal</div>
                 <div class="mb-4 text-xl font-medium">Results of Admission 2024 - 25 is out!</div>
                 <a class="px-4 py-2 mt-6 text-white bg-white border-2 border-white hover:bg-opacity-10 rounded-xl bg-opacity-5"
                    href="{{ route('results') }}">Check Result</a>
@@ -107,7 +105,8 @@
     @else
         <div class="flex items-center justify-center w-screen h-screen p-4 overflow-hidden bg-black bg-opacity-70">
             <div class="text-center text-white">
-                <h1 class="mb-8 text-4xl font-bold uppercase">Welcome to <br>Darul Huda Assam Off Campus</h1>
+                <h1 class="text-4xl font-bold uppercase">Welcome to <br>Hasanath Girls Campus</h1>
+                <div class="mb-4 text-lg font-medium">Birbhum, West Bengal</div>
                 <div class="mb-4 text-xl font-medium">Admission to 2024 - 25 is open!</div>
                 <a class="px-4 py-2 mt-6 text-white bg-white border-2 border-white hover:bg-opacity-10 rounded-xl bg-opacity-5"
                    href="{{ route('apply') }}">Get Started</a>

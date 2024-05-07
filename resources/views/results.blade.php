@@ -50,7 +50,7 @@
                         Name: <b>{{ $result->name }}</b>
                     </div>
                     <div class="py-1 border-b">
-                        Ref No: <b>{{ session('code') }}/{{ $result->id }}/2024</b>
+                        Ref No: <b>{{ $result->code }}/{{ $result->id }}/2024</b>
                     </div>
                     <div class="py-1">
                         Status: <b class="{{ $result->status ? 'text-green-400' : 'text-red-500' }}">{!! $result->status ? 'Congratulations, Your are selected!<br> To confirm your seat pay RS 1000 on or before 20/03/2024!' : 'Sorry, you are not selected!' !!}</b>

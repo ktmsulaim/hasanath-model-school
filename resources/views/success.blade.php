@@ -47,33 +47,13 @@
                     <tr class="hidden text-center border-t sm:table-row">
                         <td class="px-4 py-2"><a target="_blank"
                                class="inline-block px-4 py-2 my-1 font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-xl"
-                               href="{{ route('hallticket', ['slug' => $data->slug]) }}">Admit Card <i
-                                   class="ml-2 fa fa-download"></i></a></td>
-                        <td class="px-4 py-2"><a target="_blank"
-                               class="inline-block px-4 py-2 my-1 font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-xl"
-                               href="{{ route('applicationPrint', ['slug' => $data->slug]) }}">Application Form <i
-                                   class="ml-2 fa fa-download"></i></a></td>
-                        <td class="px-4 py-2"><a target="_blank"
-                               class="inline-block px-4 py-2 my-1 font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-xl"
-                               href="{{ route('documents', ['slug' => $data->slug]) }}">Submitted Docs <i
+                               href="{{ route('applicationPrint', ['uuid' => $data->uuid]) }}">Application Form <i
                                    class="ml-2 fa fa-download"></i></a></td>
                     </tr>
                     <tr class="border-t sm:hidden" colspan="4">
                         <td class="px-4 py-2"><a target="_blank"
                                class="inline-block px-4 py-1 my-1 text-center text-white bg-blue-600 hover:bg-blue-500 rounded-xl"
-                               href="{{ route('hallticket', ['slug' => $data->slug]) }}">Admit Card <i
-                                   class="ml-2 fa fa-download"></i></a></td>
-                    </tr>
-                    <tr class="border-t sm:hidden" colspan="4">
-                        <td class="px-4 py-2"><a target="_blank"
-                               class="inline-block px-4 py-1 my-1 text-center text-white bg-blue-600 hover:bg-blue-500 rounded-xl"
-                               href="{{ route('applicationPrint', ['slug' => $data->slug]) }}">Application Form <i
-                                   class="ml-2 fa fa-download"></i></a></td>
-                    </tr>
-                    <tr class="border-t sm:hidden" colspan="4">
-                        <td class="px-4 py-2"><a target="_blank"
-                               class="inline-block px-4 py-1 my-1 text-center text-white bg-blue-600 hover:bg-blue-500 rounded-xl"
-                               href="{{ route('documents', ['slug' => $data->slug]) }}">Submitted Docs <i
+                               href="{{ route('applicationPrint', ['uuid' => $data->uuid]) }}">Application Form <i
                                    class="ml-2 fa fa-download"></i></a></td>
                     </tr>
                 </tbody>

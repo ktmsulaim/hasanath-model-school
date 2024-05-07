@@ -15,21 +15,23 @@ class CreateApplicantsTable extends Migration
     {
         Schema::create('applicants', function (Blueprint $table) {
             $table->id();
-            $table->string('address');
-            $table->string('city');
-            $table->date('dob');
-            $table->string('email');
-            $table->string('guardian');
-            $table->bigInteger('mobile');
-            $table->bigInteger('mobile2');
             $table->string('name');
+            $table->date('dob');
+            $table->string('guardian');
+            $table->text('address');
+            $table->bigInteger('mobile');
+            $table->tinyInteger('type')->default(0);
+            $table->string('class');
+            $table->string('mother');
             $table->string('image');
-            $table->bigInteger('postalcode');
-            $table->string('state');
-            $table->string('slug');
-            $table->string('status')->nullable();
+            $table->tinyInteger('brothers')->default(0);
+            $table->tinyInteger('sisters')->default(0);
+            $table->string('uuid')->unique();
+            $table->date('dod_father')->nullable();
+            $table->integer('status')->nullable();
             $table->string('remarks')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

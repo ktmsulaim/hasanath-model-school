@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => 'Darul Huda Assam Off Campus',
+    'name' => 'Hasanath Girls Campus',
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => 'www.dhassam.in',
+    'url' => env('APP_URL', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL', null),
 

@@ -27,13 +27,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $settings = Cache::rememberForever('settings', function () {
-            $settings_all = Setting::all();
-            $settings_ = new \stdClass;
-            foreach ($settings_all as $name) {
-                $settings_->{$name->name} = $name->value;
-            }
-            return $settings_;
+            return (object) Setting::pluck('value', 'name')->toArray();
         });
+
         View::share(['settings' => $settings]);
     }
 }

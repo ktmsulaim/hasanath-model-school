@@ -25,7 +25,7 @@
      class="fixed inset-0 z-50 flex items-center justify-center w-screen h-screen overflow-hidden text-3xl font-semibold text-gray-300 bg-gray-50 md:text-5xl">
     <div class="flex flex-col items-center justify-center w-full h-full">
         <div class="absolute w-full text-center animate-pinged">
-            <span class="relative inset-0 w-full animate-pulse">DARUL HUDA ASSAM OFF CAMPUS</span>
+            <span class="relative inset-0 w-full animate-pulse">HASANATH GIRLS CAMPUS</span>
         </div>
         <div class="absolute w-full pt-20 text-base text-center text-gray-700">
             Sending Data<span class="relative animate-width"></span>
@@ -36,12 +36,12 @@
 <div
      class="items-center justify-center hidden px-4 mx-auto mt-10 mb-6 text-2xl font-bold text-center text-black uppercase sm:flex">
     <img src="{{ asset('img/logo.png') }}" class="block w-20 mx-auto mb-4 ml-auto mr-2 text-center">
-    <div class="ml-2 mr-auto">Darul Huda Islamic University Kerala
+    <div class="ml-2 mr-auto">Hasanath Girls Campus
         <br>
-        Assam Off Campus
+        West Bengal
         <div class="text-lg font-medium">
-            Baisha-Barmara, P.O. Bhogdia, P.S. Sarthebari, Pin 781305<br>
-            Contact No: 8399902373, 9633441613, 7002170175
+            Tapan, Rampurhat, Birbhum, West Bengal - 731224<br>
+            Contact No: 9562572431, 9605536676
         </div>
     </div>
 </div>
