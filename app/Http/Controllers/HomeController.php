@@ -34,6 +34,7 @@ class HomeController extends Controller
             Setting::updateOrCreate(['name' => $key], ['value' => $request->get($key)]);
         }
 
+        Cache::forget('settings');
         return back()->with('message', 'Settings Updated Successfully!');
     }
 

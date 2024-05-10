@@ -5,7 +5,7 @@
 
     @include('front')
 
-    <div x-data="app()" x-cloak class="block py-6 mx-auto text-black max-w-7xl sm:px-6 lg:px-8">
+    <div class="block py-6 mx-auto text-black max-w-7xl sm:px-6 lg:px-8">
 
         <div class="px-4 py-4 my-4 text-center bg-white shadow sm:px-6 rounded-xl">
 
