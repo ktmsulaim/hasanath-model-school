@@ -106,7 +106,7 @@ class ApplicantController extends Controller
         // add a page
         $pdf->AddPage();
         // set the source file
-        $pdf->setSourceFile(storage_path('/app/application-form.pdf'));
+        $pdf->setSourceFile(storage_path('/application-form.pdf'));
         // import page 1
         $tplIdx = $pdf->importPage(1);
         $pdf->SetMargins(0, 0, 0);

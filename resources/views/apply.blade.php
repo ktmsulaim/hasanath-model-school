@@ -72,8 +72,7 @@
                                         <label for="dob" class="block text-sm font-medium text-gray-700">Date of
                                             Birth</label>
                                         <input type="date" name="dob" id="dob" autocomplete="dob"
-                                               class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                               min="2011-11-01" max="2013-04-30" pattern="\d{4}-\d{2}-\d{2}">
+                                               class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" pattern="\d{4}-\d{2}-\d{2}">
                                     </div>
 
                                     <div class="col-span-6 form-wrapper">
@@ -544,14 +543,13 @@
         });
 
         validate.validators.requiredIf = function(value, options, key, attributes, globals) {
-            if (options.check(attributes) && (value == null || value == '' || typeof value === 'undefined' || (typeof value == 'string' && value.trim() == ''))) {
-                return '^This field is required!';
+            var msg;
+            if ((msg = options.check(attributes)) && (value == null || value == '' || typeof value === 'undefined' || (typeof value == 'string' && value.trim() == ''))) {
+                return msg;
             }
         };
 
         window.setRules = () => {
-            var start = moment('11-01-2011', 'MM-DD-YYYY');
-            var end = moment('04-30-2013', 'MM-DD-YYYY');
             var rules = {
                 dob: {
                     datetime: {
@@ -580,9 +578,10 @@
                     },
                     requiredIf: {
                         check: function(attributes) {
-                            return attributes.is_orphan == 1;
+                            return attributes.orphan == 1 ? '^This field is required when applicant is orphan!' : false;
                         }
-                    }
+                    },
+                    presence: false
                 },
                 "image": {
                     presence: {
@@ -599,10 +598,11 @@
             };
             document.querySelector('#application_form').querySelectorAll('input:not([type="hidden"]), textarea, select').forEach(i => {
                 rules[i.name] = {
+                    ...presence,
                     ...rules[i.name],
-                    ...presence
                 };
             });
+            console.log(rules);
             var validated = new FormValidate('#application_form', rules);
         }
     </script>
