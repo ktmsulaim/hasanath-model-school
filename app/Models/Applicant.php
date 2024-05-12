@@ -41,12 +41,14 @@ class Applicant extends Model
             return match ($value) {
                 self::ORPHAN => 'Orphan',
                 self::DESTITUTE => 'Destitute',
-                default => '',
+                default => 'No',
             };
         }, function ($value) {
             return match ($value) {
                 'Orphan' => self::ORPHAN,
                 'Destitute' => self::DESTITUTE,
+                '1' => self::ORPHAN,
+                '2' => self::DESTITUTE,
                 default => self::NOT_ORPHAN,
             };
         });
