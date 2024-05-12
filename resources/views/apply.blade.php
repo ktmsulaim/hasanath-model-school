@@ -110,7 +110,7 @@
                                     <div class="col-span-6 form-wrapper">
                                         <label for="orphan" class="block text-sm font-medium text-gray-700">Is the
                                             applicant an Orphan or Destitute?</label>
-                                        <select x-model="is_orphan" id="orphan" name="orphan" autocomplete="orphan"
+                                        <select x-model="is_orphan" id="orphan" name="type" autocomplete="orphan"
                                                 class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                                             <option value="0">No</option>
                                             <option value="1">Orphan</option>
@@ -120,9 +120,9 @@
 
                                     {{-- if applicant is orphan, dod of father --}}
                                     <div class="col-span-6 sm:col-span-3 form-wrapper" x-show="is_orphan == 1">
-                                        <label for="dod" class="block text-sm font-medium text-gray-700">Date of Death of
+                                        <label for="dod_father" class="block text-sm font-medium text-gray-700">Date of Death of
                                             Father</label>
-                                        <input type="date" name="dod" id="dod" autocomplete="dod"
+                                        <input :disabled="is_orphan != 1" type="date" name="dod_father" id="dod_father" autocomplete="dod_father"
                                                class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                                     </div>
 
@@ -572,13 +572,13 @@
                         message: "^Please enter a valid 10 digit mobile no. without code."
                     }
                 },
-                "dod": {
+                "dod_father": {
                     datetime: {
                         dateOnly: true
                     },
                     requiredIf: {
                         check: function(attributes) {
-                            return attributes.orphan == 1 ? '^This field is required when applicant is orphan!' : false;
+                            return attributes.type == 1 ? '^This field is required when applicant is orphan!' : false;
                         }
                     },
                     presence: false
