@@ -97,7 +97,7 @@
             <div class="text-center text-white">
                 <h1 class="text-4xl font-bold uppercase">Welcome to <br>Hasanath Girls Campus</h1>
                 <div class="mb-4 text-lg font-medium">Birbhum, West Bengal</div>
-                <div class="mb-4 text-xl font-medium">Results of Admission 2024 - 25 is out!</div>
+                <div class="mb-4 text-xl font-medium">Results of Admission 2025 - 26 is out!</div>
                 <a class="px-4 py-2 mt-6 text-white bg-white border-2 border-white hover:bg-opacity-10 rounded-xl bg-opacity-5"
                    href="{{ route('results') }}">Check Result</a>
             </div>
@@ -107,7 +107,7 @@
             <div class="text-center text-white">
                 <h1 class="text-4xl font-bold uppercase">Welcome to <br>Hasanath Girls Campus</h1>
                 <div class="mb-4 text-lg font-medium">Birbhum, West Bengal</div>
-                <div class="mb-4 text-xl font-medium">Admission to 2024 - 25 is open!</div>
+                <div class="mb-4 text-xl font-medium">Admission to 2025 - 26 is open!</div>
                 <a class="px-4 py-2 mt-6 text-white bg-white border-2 border-white hover:bg-opacity-10 rounded-xl bg-opacity-5"
                    href="{{ route('apply') }}">Get Started</a>
             </div>

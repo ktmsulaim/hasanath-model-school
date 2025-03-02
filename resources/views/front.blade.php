@@ -49,7 +49,7 @@
     <h2 class="px-3 px-8 py-2 text-xl font-bold text-center text-white bg-gray-800 shadow-lg rounded-xl">Application
         Form</h2>
 </div>
-<h1 class="px-4 py-2 mt-2 text-xl text-center">Admission to 2024 - 25 Academic Year</h1>
+<h1 class="px-4 py-2 mt-2 text-xl text-center">Admission to 2025 - 26 Academic Year</h1>
 
 <p class="px-4 py-2 my-2 text-lg text-center text-white bg-blue-600 shadow-lg">Already Registered? <a
        class="text-gray-300 hover:text-white hover:underline" href="{{ route('applications') }}">Search Your

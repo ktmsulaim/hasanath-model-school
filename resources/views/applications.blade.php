@@ -41,7 +41,7 @@
                 <tbody>
                     @foreach ($applications as $data)
                         <tr class="text-center border-t">
-                            <td class="px-1 py-2 sm:px-4">{{ $data->code }}/{{ $data->id }}/2024</td>
+                            <td class="px-1 py-2 sm:px-4">{{ $data->code }}/{{ $data->id }}/2025</td>
                             <td class="px-1 py-2 sm:px-4">{{ $data->name }}</td>
                             <td class="px-1 py-2 text-center sm:px-4">
                                 <div class="flex flex-col items-center">
