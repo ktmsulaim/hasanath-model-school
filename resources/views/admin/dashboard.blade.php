@@ -104,7 +104,7 @@
                 <tbody>
                     @foreach ($applications as $data)
                         <tr class="text-center border-t">
-                            <td class="px-1 py-2 sm:px-4">{{ $data->code }}/{{ $data->id }}/2024</td>
+                            <td class="px-1 py-2 sm:px-4">{{ $data->code }}/{{ $data->id }}/2025</td>
                             <td class="px-1 py-2 sm:px-4">{{ $data->name }}</td>
                             @if ((\Carbon\Carbon::parse($settings->ending_at) ?? '') >= today())
                                 <td

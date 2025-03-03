@@ -182,7 +182,7 @@ class ApplicantController extends Controller
 
     public function create()
     {
-        $year = 2024;
+        $year = 2025;
         return view('apply', ['title' => "Application Form - Admission $year ", 'robots' => 'index,follow', 'description' => "Admission Portal for Hasanth Girls Campus in West Bengal. Darul Hasanath Islamiyya Complex serves the Muslim community in India, especially Kerala, through great visionary scholars and supportive community leaders, providing quality education and training."]);
     }
 

@@ -29,7 +29,7 @@
                             class="px-4 py-2" rowspan="2"><img class="w-full max-w-xs"
                                  :src="localStorage.getItem('dfdfdfImageSetup') ? atob(localStorage.getItem('dfdfdfImageSetup')) : false">
                         </td>
-                        <td class="px-4 py-2 text-center">{{ $data->code }}/{{ $data->id }}/2024</td>
+                        <td class="px-4 py-2 text-center">{{ $data->code }}/{{ $data->id }}/2025</td>
                         <td class="px-4 py-2">{{ $data->name }}</td>
                         <td class="px-4 py-2">{{ $data->address }}</td>
                     </tr>
@@ -39,7 +39,7 @@
                         </td>
                     </tr>
                     <tr class="border-t sm:hidden" colspan="4">
-                        <td class="px-4 py-2 text-center">{{ $data->code }}/{{ $data->id }}/2024</td>
+                        <td class="px-4 py-2 text-center">{{ $data->code }}/{{ $data->id }}/2025</td>
                     </tr>
                     <tr class="border-t sm:hidden" colspan="4">
                         <td class="px-4 py-2">{{ $data->name }}</td>
