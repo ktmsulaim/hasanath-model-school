@@ -218,7 +218,7 @@ class ApplicantController extends Controller
 
         $uuid = Str::slug($request->name);
 
-        while (count(Applicant::where('uuid', $uuid)->get())) {
+        while (Applicant::where('uuid', $uuid)->withTrashed()->count()) {
             $uuid .= '-' . Str::random(4);
         }
 
